@@ -1,0 +1,21 @@
+.blacktile {
+    width: 100px;
+    height: 100px;
+    padding: 0px 0px 0px 0px;
+    display:inline-block;
+    background-color: darkgrey;
+}
+.blacktile:hover { 
+    background-color: lightblue;
+}
+
+.whitetile {
+    width: 100px;
+    height: 100px;
+    padding: 0px 0px 0px 0px;
+    display:inline-block;
+    background-color: white;
+}
+.whitetile:hover { 
+    background-color: lightblue;
+}
