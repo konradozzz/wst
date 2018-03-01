@@ -1,12 +1,9 @@
 .tile {
     width: 100px;
     height: 100px;
-    padding: 0px 0px 0px 0px;
     display:inline-block;
 }
-.tile:hover { 
-    background-color: lightblue;
-}
+.tile:hover { background-color: lightblue; }
 .black { background-color: darkgrey; }
 .white { background-color: floralwhite; }
 .target { box-shadow:0px 0px 0px 3px gold inset; }
