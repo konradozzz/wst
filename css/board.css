@@ -1,3 +1,9 @@
+#board {
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+    display:inline-block;
+}
 .tile {
     width: 100px;
     height: 100px;
