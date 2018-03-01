@@ -1,0 +1,21 @@
+Shackspel
+
+admin skall kunna:
+-ta bort användare
+-se full spelstatistik
+
+användare skall kunna:
+-skapa ett konto, logga in/ut
+-se sin egen spelstatistik
+-söka/spela spel
+
+spel logik:
+-spelarna skall turvis göra sina drag
+-dragen skall följa shackregler
+-villkor för avslutat spel (oavgjort/shackmatt)
+
+db:
+-användare (spelare/admin)
+-spelhistorik
+-pjäser
+-brädet
