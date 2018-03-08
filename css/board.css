@@ -7,14 +7,28 @@
 .board {
 	grid-template-columns: repeat(8, 12.5%);
 	grid-template-rows: repeat(8, 12.5%);
-	width: 40vw;
-	height: 40vw;
+	width: 80vmin;
+	height: 80vmin;
 }
 .graveyard {
 	grid-template-columns: repeat(2, 50%);
 	grid-template-rows: repeat(8, 12.5%);
-	width: 10vw;
-	height: 40vw;
+	width: 20vmin;
+	height: 80vmin;
+}
+@media (max-aspect-ratio: 12/8) {
+	.board {
+		grid-template-columns: repeat(8, 12.5%);
+		grid-template-rows: repeat(8, 12.5%);
+		width: 60vmin;
+		height: 60vmin;
+	}
+	.graveyard {
+		grid-template-columns: repeat(8, 12.5%);
+		grid-template-rows: repeat(2, 50%);
+		width: 60vmin;
+		height: 15vmin;
+	}
 }
 .interactive:hover { background-color: lightblue; }
 .black { background-color: darkgrey; }
