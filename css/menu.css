@@ -1,4 +1,12 @@
+body {
+	background-color: #D7EEF2;
+}
+
+header {
+}
+
 #menu {
-	background-color: lightblue;
+	background-color: #F2855E;
 	text-align: center;
+	color: #194769;
 }

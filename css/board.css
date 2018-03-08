@@ -1,16 +1,36 @@
-.board {
+.piece-container {
+	display: inline-grid;
 	border-style: solid;
 	border-color: black;
 	border-width: 2px;
-    display:inline-block;
+}
+.board {
+	grid-template-columns: repeat(8, 12.5%);
+	grid-template-rows: repeat(8, 12.5%);
+	width: 40vw;
+	height: 40vw;
+}
+.graveyard {
+	grid-template-columns: repeat(2, 50%);
+	grid-template-rows: repeat(8, 12.5%);
+	width: 10vw;
+	height: 40vw;
 }
 .tile {
-    width: 100px;
-    height: 100px;
-    display:inline-block;
-}
-.tile:hover { background-color: lightblue; }
+	width: auto;
+	height: auto;
+/* 	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+ */}
+.interactive:hover { background-color: lightblue; }
 .black { background-color: darkgrey; }
 .white { background-color: floralwhite; }
 .target { box-shadow:0px 0px 0px 3px gold inset; }
 .hint { box-shadow:0px 0px 0px 3px lightgreen inset; }
+.piece {
+	max-width: 100%;
+	max-height: 100%;
+};
