@@ -1,12 +1,27 @@
 body {
 	background-color: #D7EEF2;
 }
-
-header {
+.grid-container {
+	display: inline-grid;
+	grid-template-columns: auto auto;
+	/* grid-template-rows: auto auto; */
 }
-
-#menu {
+.menu {
+	grid-column-start: 1;
+	grid-column-end: 1;
+	/* grid-row-start: 1; */
 	background-color: #F2855E;
 	text-align: center;
 	color: #194769;
+	width: 20vmin;
+}
+.content {
+	grid-column-start: 2;
+	/* grid-column-end: 4; */
+	/* grid-row-start: 2; */
+	/* background-color: #1D1918; */
+}
+.center-flex {
+	display: flex;
+	justify-content: center;
 }
