@@ -17,9 +17,10 @@
 	height: 80vmin;
 }
 @media (max-aspect-ratio: 12/8) {
+	.piece-container {
+		display: grid;
+	}
 	.board {
-		grid-template-columns: repeat(8, 12.5%);
-		grid-template-rows: repeat(8, 12.5%);
 		width: 60vmin;
 		height: 60vmin;
 	}
