@@ -1,5 +1,8 @@
+.board-container {
+	display: grid;
+}
 .piece-container {
-	display: inline-grid;
+	display: grid;
 	border-style: solid;
 	border-color: black;
 	border-width: 2px;
@@ -16,19 +19,40 @@
 	width: 20vmin;
 	height: 80vmin;
 }
-@media (max-aspect-ratio: 12/8) {
-	.piece-container {
-		display: grid;
+@media (min-aspect-ratio: 8/8) {
+	.board-container {
+		grid-template-rows: auto auto auto;
 	}
 	.board {
-		width: 60vmin;
-		height: 60vmin;
+		grid-column-start: 2;
+	}
+	.graveyard-1 {
+		grid-column-start: 1;
+	}
+	.graveyard-2 {
+		grid-column-start: 3;
+	}
+}
+@media (max-aspect-ratio: 8/8) {
+	.board-container {
+		grid-template-rows: auto auto auto;
+	}
+	.graveyard-1 {
+		grid-row-start: 1;
+	}
+	.graveyard-2 {
+		grid-row-start: 3;
+	}
+	.board {
+		grid-row-start: 2;
+		width: 65vmin;
+		height: 65vmin;
 	}
 	.graveyard {
 		grid-template-columns: repeat(8, 12.5%);
 		grid-template-rows: repeat(2, 50%);
-		width: 60vmin;
-		height: 15vmin;
+		width: 65vmin;
+		height: 20vmin;
 	}
 }
 .interactive:hover { background-color: lightblue; }
