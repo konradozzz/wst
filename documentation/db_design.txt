@@ -1,11 +1,11 @@
 user:           user_id(pk), name(unique), password, authority
 
-user_game:      game_id(fk), user_id(fk), color_id(fk)
+game_user:      game_id(fk), user_id(fk), color_id(fk), winner
 cpk: game_id+user_id
 
-game:           game_id(pk), status(running, draw, decided), winner(null/fk user_id)
+game:           game_id(pk), running
 
-turn:           turn_number(starts from 1 seq), game_id(fk), piece_id(fk), to_column, to_row
+turn:           turn_number(starts from 1 seq, incremented by program logic), game_id(fk), piece_id(fk), to_col, to_row
 cpk: turn_id+game_id
 
 
@@ -14,9 +14,9 @@ cpk: turn_id+game_id
 
 
 (config data)
-color:          color_id, color(data: white, black)
+color:          color_id, type(data: white, black)
 
-piece:          piece_id, name, color_id(fk), number
+piece:          piece_id, type, color_id(fk), number
 data:
 rook,   white, 1
 rook,   white, 2
@@ -52,7 +52,7 @@ pawn,   black, 6
 pawn,   black, 7
 pawn,   black, 8
 
-start_state:    piece_id(fk), column, row
+start_state:    piece_id(fk), col, row
 data:
 rook,   white, 1, 1, a
 rook,   white, 2, 1, h
