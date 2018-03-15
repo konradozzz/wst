@@ -1,34 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<link rel="stylesheet" href="../css/menu.css" />
 		<link rel="stylesheet" href="../css/board.css" />
+		<title>Chess game</title>
 	</head>
     <body>
-		<div id="menu">
-		Login | Logout | Find Game | Statistics | User Management
-		</div>
-		<div class="board">
-			<div class="black tile"></div><div class="white tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br />
-		</div>
-		<div class="board">
-			<div class="black tile"></div><div class="white tile"></div><div class="black tile"></div><div class="white tile"></div><div class="black tile"></div><div class="white tile"></div><div class="black tile"></div><div class="white tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br />
-<!-- 		<div class="black tile target">
-				<a href="generatedactionname">
-					<img src="../images/testpiece.png" alt="zzz" />
-				</a>
+		<div class="centered">
+			<div class="grid-container">
+				<div class="menu">
+					Login | Logout | Find Game | Statistics | User Management
+				</div>
+				<div class="content">
+					<div class="board-container">
+						<div class="piece-container graveyard graveyard-1">
+						</div>
+						<div class="piece-container board">
+							<div class="black interactive"><img class="piece" draggable="false" src="../images/testpiece.png" alt="testpiece" /></div>
+							<div class="white"><img class="piece" draggable="false" src="../images/testpiece.png" alt="testpiece" /></div>
+							<div class="black"></div>
+							<div class="white"></div>
+							<div class="black"></div>
+							<div class="white"></div>
+							<div class="black"></div>
+							<div class="white"></div>
+
+							<div class="white target interactive"></div><div class="black interactive"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div>
+							<div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div>
+							<div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div>
+							<div class="black"></div><div class="white hint"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div>
+							<div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div>
+							<div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div>
+							<div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div><div class="white"></div><div class="black"></div>
+						</div>
+						<div class="piece-container graveyard graveyard-2">
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="white tile hint">
-				<a href="generatedactionname">
-					<img src="../images/testpiece.png" alt="zzz" />
-				</a>
-			</div>
-			<div class="black tile">
-				<img src="../images/testpiece.png" alt="zzz" />
-			</div>
-			<br /><div class="white tile hint"></div><div class="black tile target"></div><div class="white tile"></div>-->	
 		</div>
-		<div class="board">
-			<div class="black tile"></div><div class="white tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br /><div class="black tile"></div><br /><div class="white tile"></div><br />
-		</div>
-    </body>
+	</body>
 </html>
