@@ -1,0 +1,89 @@
+user:           user_id(pk), name(unique), password, authority
+
+user_game:      game_id(fk), user_id(fk), color_id(fk)
+cpk: game_id+user_id
+
+game:           game_id(pk), status(running, draw, decided), winner(null/fk user_id)
+
+turn:           turn_number(starts from 1 seq), game_id(fk), piece_id(fk), to_column, to_row
+cpk: turn_id+game_id
+
+
+
+
+
+
+(config data)
+color:          color_id, color(data: white, black)
+
+piece:          piece_id, name, color_id(fk), number
+data:
+rook,   white, 1
+rook,   white, 2
+knight, white, 1
+knight, white, 2
+bishop, white, 1
+bishop, white, 2
+queen,  white, 1
+king,   white, 1
+pawn,   white, 1
+pawn,   white, 2
+pawn,   white, 3
+pawn,   white, 4
+pawn,   white, 5
+pawn,   white, 6
+pawn,   white, 7
+pawn,   white, 8
+
+rook,   black, 1
+rook,   black, 2
+knight, black, 1
+knight, black, 2
+bishop, black, 1
+bishop, black, 2
+queen,  black, 1
+king,   black, 1
+pawn,   black, 1
+pawn,   black, 2
+pawn,   black, 3
+pawn,   black, 4
+pawn,   black, 5
+pawn,   black, 6
+pawn,   black, 7
+pawn,   black, 8
+
+start_state:    piece_id(fk), column, row
+data:
+rook,   white, 1, 1, a
+rook,   white, 2, 1, h
+knight, white, 1, 1, b
+knight, white, 2, 1, g
+bishop, white, 1, 1, c
+bishop, white, 2, 1, f
+queen,  white, 1, 1, d
+king,   white, 1, 1, e
+pawn,   white, 1, 2, a
+pawn,   white, 2, 2, b
+pawn,   white, 3, 2, c
+pawn,   white, 4, 2, d
+pawn,   white, 5, 2, e
+pawn,   white, 6, 2, f
+pawn,   white, 7, 2, g
+pawn,   white, 8, 2, h
+
+rook,   black, 1, 8, a
+rook,   black, 2, 8, h
+knight, black, 1, 8, b
+knight, black, 2, 8, g
+bishop, black, 1, 8, c
+bishop, black, 2, 8, f
+queen,  black, 1, 8, d
+king,   black, 1, 8, e
+pawn,   black, 1, 7, a
+pawn,   black, 2, 7, b
+pawn,   black, 3, 7, c
+pawn,   black, 4, 7, d
+pawn,   black, 5, 7, e
+pawn,   black, 6, 7, f
+pawn,   black, 7, 7, g
+pawn,   black, 8, 7, h
