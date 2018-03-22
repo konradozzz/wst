@@ -5,20 +5,20 @@ class ChessPiece
     private $col;
     private $moveRule;
 
-    public function __construct($row, $col)
+    public function __construct($row, $col, $moveRule)
     {
-        $this->validatePosition($row, $col);
+  //      $this->validatePosition($row, $col);
         $this->row = $row;
         $this->col = $col;            
-        $this->moveRule = new MoveRule(1, 1);
+        $this->moveRule = $moveRule;
     }
     
     public function move($row, $col)
     {
-        $this->validatePosition($row, $col);
-        if ($this->moveRule->validateMove($row, $col, $this->row, $this->col)) {
+//        $this->validatePosition($row, $col);
+        if ($this->moveRule->validateMove($this->row, $this->col, $row, $col)) {
             $this->row = $row;
-            $this->col = $col;            
+            $this->col = $col;
         }
     }
     
