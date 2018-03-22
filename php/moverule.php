@@ -3,16 +3,24 @@ class MoveRule
 {
     private $deltaRow;
     private $deltaCol;
+    private $recursive;
 
-    public function __construct($deltaRow, $deltaCol)
+    public function __construct($deltaRow, $deltaCol, $recursive)
     {
         $this->deltaRow = $deltaRow;
         $this->deltaCol = $deltaCol;
+        $this->recursive = $recursive;
     }
     
     public function validateMove($fromRow, $fromCol, $toRow, $toCol)
     {
-        if ($this->validateRowDelta($toRow - $fromRow) && $this->validateColDelta($toCol - $fromCol)) {
+        if ($this->recursive) {
+            $zz = ($toRow - $fromRow) / $this->deltaRow;
+            if (($toCol - $fromCol) * $zz == $this->deltaCol) {
+                return true;
+            }
+        }
+        else if ($this->validateRowDelta($toRow - $fromRow) && $this->validateColDelta($toCol - $fromCol)) {
             return true;
         }
         return false;
