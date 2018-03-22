@@ -6,18 +6,30 @@ class ChessPiece
 
     public function __construct($row, $col)
     {
+        $this->setPosition($row, $col);
+    }
+    
+    public function setPosition($row, $col)
+    {
+        if (!$this->validatePosition($row, $col)) {
+            throw new Exception("Failed to validate position for row: " . $row . ", column: " . $col . ".\n");
+        }
         $this->row = $row;
         $this->col = $col;
     }
     
-    public function move($row, $col)
+    public function getRow()
     {
-        $this->row = $row;
-        $this->col = $col;
+        return $this->row;
+    }
+
+    public function getCol()
+    {
+        return $this->col;
     }
     
-    public function print()
+    private function validatePosition($row, $col)
     {
-        echo "row: " . $this->row . ", column: " . $this->col . "; \n";
+        return preg_match("/^[1-8]$/", $row) && preg_match("/^[a-h]$/", $col);
     }
 }
