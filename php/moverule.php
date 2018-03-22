@@ -14,13 +14,37 @@ class MoveRule
     
     public function validateMove($fromPosition, $toPosition)
     {
-/*         if ($this->recursive) {
-            $zz = ($toPosition->getRow() - $fromPosition->getRow()) / $this->deltaRow;
-            if (($toPosition->getCol() - $fromPosition->getCol()) * $zz == $this->deltaCol) {
+        $delta = $toPosition->getDelta($fromPosition);
+        if ($this->recursive) {
+            if ($this->deltaRow == 0) {
+                if ($delta->getRow() != 0) {
+                    return false;
+                }
+                if ($this->deltaCol > 0 && $delta->getCol() <= 0) {
+                    return false;
+                }
+                if ($this->deltaCol < 0 && $delta->getCol() >= 0) {
+                    return false;
+                }
+                return true;
+            }
+            if ($this->deltaCol == 0) {
+                if ($delta->getCol() != 0) {
+                    return false;
+                }
+                if ($this->deltaRow > 0 && $delta->getRow() <= 0) {
+                    return false;
+                }
+                if ($this->deltaRow < 0 && $delta->getRow() >= 0) {
+                    return false;
+                }
+                return true;
+            }
+            if ($delta->getRow() / $delta->getCol() == $this->deltaRow / $this->deltaCol) {
                 return true;
             }
         }
-        else */ if ($this->validateDelta($toPosition->getDelta($fromPosition))) {
+        else if ($this->validateDelta($delta)) {
             return true;
         }
         return false;
