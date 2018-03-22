@@ -12,27 +12,22 @@ class MoveRule
         $this->recursive = $recursive;
     }
     
-    public function validateMove($fromRow, $fromCol, $toRow, $toCol)
+    public function validateMove($fromPosition, $toPosition)
     {
-        if ($this->recursive) {
-            $zz = ($toRow - $fromRow) / $this->deltaRow;
-            if (($toCol - $fromCol) * $zz == $this->deltaCol) {
+/*         if ($this->recursive) {
+            $zz = ($toPosition->getRow() - $fromPosition->getRow()) / $this->deltaRow;
+            if (($toPosition->getCol() - $fromPosition->getCol()) * $zz == $this->deltaCol) {
                 return true;
             }
         }
-        else if ($this->validateRowDelta($toRow - $fromRow) && $this->validateColDelta($toCol - $fromCol)) {
+        else */ if ($this->validateDelta($toPosition->getDelta($fromPosition))) {
             return true;
         }
         return false;
     }
     
-    private function validateRowDelta($delta)
+    private function validateDelta($delta)
     {
-        return $this->deltaRow == $delta;
-    }
-
-    private function validateColDelta($delta)
-    {
-        return $this->deltaCol == $delta;
+        return $this->deltaRow == $delta->getRow() && $this->deltaCol == $delta->getCol();
     }
 }
