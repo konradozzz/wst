@@ -8,8 +8,8 @@ class Position
     
     public function __construct($row, $col)
     {
-/*         $this->validateValue($row);
-        $this->validateValue($col); */
+        $this->validateValue($row);
+        $this->validateValue($col);
         $this->row = $row;
         $this->col = $col;
     }
