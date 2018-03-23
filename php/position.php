@@ -14,11 +14,6 @@ class Position
         $this->col = $col;
     }
     
-    public function getDelta($position)
-    {
-        return new Position($this->row - $position->getRow(), $this->col - $position->getCol());
-    }
-    
     public function getRow()
     {
         return $this->row;
