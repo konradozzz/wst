@@ -4,6 +4,8 @@ class MoveRule
     private $deltaRow;
     private $deltaCol;
     private $recursive;
+    private $canCapture;
+    private $hasToCapture;
 
     public function __construct($deltaRow, $deltaCol, $recursive)
     {
@@ -12,11 +14,11 @@ class MoveRule
         $this->recursive = $recursive;
     }
     
-    public function getValidMoves($fromPosition)
+    public function getValidMoves($position)
     {
         $moves = array();
-        while (($fromPosition = $this->increasePosition($fromPosition))->validate()) {
-            array_push($moves, $fromPosition);
+        while (($position = $this->increasePosition($position))->validate()) {
+            array_push($moves, $position);
             if (!$this->recursive) {
                 break;
             }
