@@ -15,16 +15,18 @@ class MoveRule
     public function getValidMoves($fromPosition)
     {
         $moves = array();
-        if ($this->recursive) {
-            $pos =  new Position($fromPosition->getRow(), $fromPosition->getCol());
-            while (Position::validate($pos->getRow() + $this->deltaRow, $pos->getCol() + $this->deltaCol)) {
-                $pos =  new Position($pos->getRow() + $this->deltaRow, $pos->getCol() + $this->deltaCol);
-                array_push($moves, $pos);
+        $pos = new Position($fromPosition->getRow(), $fromPosition->getCol());
+        while (($pos = $this->increasePosition($pos))->validate()) {
+            array_push($moves, $pos);
+            if (!$this->recursive) {
+                break;
             }
-        } else {
-            array_push($moves, new Position($fromPosition->getRow() + $this->deltaRow,
-                $fromPosition->getCol() + $this->deltaCol));
         }
         return $moves;
+    }
+    
+    private function increasePosition($position)
+    {
+        return new Position($position->getRow() + $this->deltaRow, $position->getCol() + $this->deltaCol);
     }
 }

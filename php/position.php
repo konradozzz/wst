@@ -8,9 +8,6 @@ class Position
     
     public function __construct($row, $col)
     {
-        if (!self::validate($row) || !self::validate($col)) {
-            throw new Exception("Failed to validate position for row: " . $row . " and column: " . $col . ".\n");
-        }
         $this->row = $row;
         $this->col = $col;
     }
@@ -25,9 +22,10 @@ class Position
         return $this->col;
     }
     
-    public static function validate($val)
+    public function validate()
     {
-        if ($val < self::MIN_VALUE || $val > self::MAX_VALUE) {
+        if ($this->row < self::MIN_VALUE || $this->row > self::MAX_VALUE ||
+            $this->col < self::MIN_VALUE || $this->col > self::MAX_VALUE) {
             return false;
         }
         return true;

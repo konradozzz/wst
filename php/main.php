@@ -1,4 +1,5 @@
 <?php
+require("position.php");
 require("moverule.php");
 require("chesspiece.php");
 
