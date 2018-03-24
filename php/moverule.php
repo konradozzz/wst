@@ -15,9 +15,8 @@ class MoveRule
     public function getValidMoves($fromPosition)
     {
         $moves = array();
-        $pos = new Position($fromPosition->getRow(), $fromPosition->getCol());
-        while (($pos = $this->increasePosition($pos))->validate()) {
-            array_push($moves, $pos);
+        while (($fromPosition = $this->increasePosition($fromPosition))->validate()) {
+            array_push($moves, $fromPosition);
             if (!$this->recursive) {
                 break;
             }
