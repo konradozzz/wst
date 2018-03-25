@@ -10,9 +10,6 @@ class BoardState
 
     public function getSquare($position)
     {
-        if (in_array($position, $this->positions)) {
-            return true;
-        }
-        return false;
+        return in_array($position, $this->positions);
     }
 }

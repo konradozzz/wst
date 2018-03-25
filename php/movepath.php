@@ -1,11 +1,9 @@
 <?php
-class MoveRule
+class MovePath
 {
     private $deltaRow;
     private $deltaCol;
     private $recursive;
-    private $canCapture;
-    private $hasToCapture;
 
     public function __construct($deltaRow, $deltaCol, $recursive)
     {
@@ -17,7 +15,8 @@ class MoveRule
     public function getValidMoves($position)
     {
         $moves = array();
-        while (($position = $this->increasePosition($position))->validate()) {
+        while ($this->isNextPositionValid($position)) {
+            $position = $this->getNextPosition($position);
             array_push($moves, $position);
             if (!$this->recursive) {
                 break;
@@ -26,7 +25,12 @@ class MoveRule
         return $moves;
     }
     
-    private function increasePosition($position)
+    private function isNextPositionValid($position)
+    {
+        return $this->getNextPosition($position)->validate();
+    }
+    
+    private function getNextPosition($position)
     {
         return new Position($position->getRow() + $this->deltaRow, $position->getCol() + $this->deltaCol);
     }

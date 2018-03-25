@@ -1,6 +1,6 @@
 <?php
 require("../position.php");
-require("../moverule.php");
+require("../movepath.php");
 
 function compareArrays($a1, $a2)
 {
@@ -9,9 +9,9 @@ function compareArrays($a1, $a2)
     return $a1 == $a2;
 }
 
-//rule names seen from the view of a chess piece looking over the board
+//path names seen from the view of a chess piece looking over the board
 
-$oneStepForward = new MoveRule(1, 0, false);
+$oneStepForward = new MovePath(1, 0, false);
 $start = new Position(1, 1);
 $check = array(new Position(2, 1));
 $moves = $oneStepForward->getValidMoves($start);
@@ -28,7 +28,7 @@ $moves = $oneStepForward->getValidMoves($start);
 assert(compareArrays($check, $moves));
 
 
-$anyStepForward = new MoveRule(1, 0, true);
+$anyStepForward = new MovePath(1, 0, true);
 $start = new Position(1, 1);
 $check = array( new Position(7, 1),
                 new Position(2, 1),
