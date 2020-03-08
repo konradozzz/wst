@@ -1,23 +1,22 @@
-<?php
+<?php declare(strict_types=1);
 
 
 class MoveRule
 {
-    private $canCapture;
-    private $mustCapture;
-    private const MAX_VALUE = 7;
+    private bool $canCapture;
+    private bool $mustCapture;
 
-    public function __construct($canCapture, $mustCapture)
+    public function __construct(bool $canCapture, bool $mustCapture)
     {
         $this->canCapture = $canCapture;
         $this->mustCapture = $mustCapture;
     }
     
-    public function validateMoves($moves, $boardState)
+    public function validateMoves(array $moves, BoardState $boardState)
     {
         $validatedMoves = array();
         foreach ($moves as $move) {
-            if ($boardState->getSquare($move)) {
+            if ($boardState->getTile($move)) {
                 if ($this->canCapture) {
                     array_push($validatedMoves, $move);
                 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 
 class MovePath
@@ -7,17 +7,18 @@ class MovePath
     private int $deltaCol;
     private bool $recursive;
 
-    public function __construct($deltaRow, $deltaCol, $recursive)
+    public function __construct(int $deltaRow, int $deltaCol, bool $recursive)
     {
         $this->deltaRow = $deltaRow;
         $this->deltaCol = $deltaCol;
         $this->recursive = $recursive;
     }
     
-    public function getValidMoves($position)
+    public function getValidMoves(Position $position)
     {
         $moves = array();
-        while (($position = $this->getNextPosition($position))->validate()) {
+        while (Position::validate($this->getNextRow($position), $this->getNextCol($position))) {
+            $position = new Position($this->getNextRow($position), $this->getNextCol($position));
             array_push($moves, $position);
             if (!$this->recursive) {
                 break;
@@ -26,8 +27,11 @@ class MovePath
         return $moves;
     }
 
-    private function getNextPosition($position)
-    {
-        return new Position($position->getRow() + $this->deltaRow, $position->getCol() + $this->deltaCol);
+    private function getNextRow(Position $position) {
+        return $position->getRow() + $this->deltaRow;
+    }
+
+    private function getNextCol(Position $position) {
+        return $position->getCol() + $this->deltaCol;
     }
 }
