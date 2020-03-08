@@ -1,9 +1,11 @@
 <?php
+
+
 class MovePath
 {
-    private $deltaRow;
-    private $deltaCol;
-    private $recursive;
+    private int $deltaRow;
+    private int $deltaCol;
+    private bool $recursive;
 
     public function __construct($deltaRow, $deltaCol, $recursive)
     {
@@ -15,8 +17,7 @@ class MovePath
     public function getValidMoves($position)
     {
         $moves = array();
-        while ($this->isNextPositionValid($position)) {
-            $position = $this->getNextPosition($position);
+        while (($position = $this->getNextPosition($position))->validate()) {
             array_push($moves, $position);
             if (!$this->recursive) {
                 break;
@@ -24,12 +25,7 @@ class MovePath
         }
         return $moves;
     }
-    
-    private function isNextPositionValid($position)
-    {
-        return $this->getNextPosition($position)->validate();
-    }
-    
+
     private function getNextPosition($position)
     {
         return new Position($position->getRow() + $this->deltaRow, $position->getCol() + $this->deltaCol);

@@ -1,7 +1,7 @@
 <?php
-require("../position.php");
-require("../boardstate.php");
-require("../moverule.php");
+require("../Position.php");
+require("../BoardState.php");
+require("../MoveRule.php");
 
 $movePath = array(  new Position(7, 1),
                     new Position(2, 1),

@@ -1,6 +1,6 @@
 <?php
-require("../position.php");
-require("../movepath.php");
+require("../Position.php");
+require("../MovePath.php");
 
 function compareArrays($a1, $a2)
 {

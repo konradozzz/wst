@@ -1,4 +1,6 @@
 <?php
+
+
 class MoveRule
 {
     private $canCapture;

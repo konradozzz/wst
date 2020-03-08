@@ -1,4 +1,6 @@
 <?php
+
+
 class Position
 {
     private $row;

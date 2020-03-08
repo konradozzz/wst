@@ -1,4 +1,6 @@
 <?php
+
+
 class ChessPiece
 {
     private $row;
