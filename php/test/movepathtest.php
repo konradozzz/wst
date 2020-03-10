@@ -9,8 +9,6 @@ function compareArrays($a1, $a2)
     return $a1 == $a2;
 }
 
-//path names seen from the view of a chess piece looking over the board
-
 $oneStepForward = new MovePath(1, 0, false);
 $start = new Position(1, 1);
 $check = array(new Position(2, 1));
@@ -47,8 +45,11 @@ $moves = $anyStepForward->getValidMoves($start);
 assert(compareArrays($check, $moves));
 
 $start = new Position(7, 6);
-try {
-    $moves = $anyStepForward->getValidMoves($start);
-} catch (Exception $e) {
-    assert(false);
-}
+$moves = $anyStepForward->getValidMoves($start);
+assert(compareArrays(array(), $moves));
+
+$oneStepBackwards = new MovePath(-1, 0, true);
+$start = new Position(1, 1);
+$check = array(new Position(0, 1));
+$moves = $oneStepBackwards->getValidMoves($start);
+assert(compareArrays($check, $moves));

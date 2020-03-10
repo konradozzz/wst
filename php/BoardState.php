@@ -3,15 +3,30 @@
 
 class BoardState
 {
-    private array $positions;
+    private array $pieces;
 
-    public function __construct(array $positions)
+    public function __construct(array $pieces)
     {
-        $this->positions = $positions;
+        $this->pieces = $pieces;
     }
 
     public function getTile(Position $position)
     {
-        return in_array($position, $this->positions);
+        foreach ($this->pieces as $piece) {
+            if ($piece->getPosition() == $position) {
+                return $piece;
+            }
+        }
+    }
+
+    public function movePiece(ChessPiece $piece, Position $position) {
+        if ($onTarget = $this->getTile($position)) {
+            $this->moveToGraveyard($onTarget);
+        }
+        $piece->setPosition($position);
+    }
+
+    private function moveToGraveyard(ChessPiece $piece) {
+        $piece->getPosition()->setGraveyard();
     }
 }

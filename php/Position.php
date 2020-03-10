@@ -11,7 +11,7 @@ class Position
     public function __construct(int $row, int $col)
     {
         if (!$this->validate($row, $col)) {
-            throw new Exception('Invalid position. row: ' . $this->row . ', col: ' . $this->col);
+            throw new RuntimeException('Invalid position. row: ' . $row . ', col: ' . $col);
         }
         $this->row = $row;
         $this->col = $col;
@@ -26,7 +26,13 @@ class Position
     {
         return $this->col;
     }
-    
+
+    public function setGraveyard()
+    {
+        $this->row = -1;
+        $this->col = -1;
+    }
+
     public static function validate(int $row, int $col)
     {
         if ($row < self::MIN_VALUE || $row > self::MAX_VALUE ||

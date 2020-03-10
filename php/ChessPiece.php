@@ -3,28 +3,30 @@
 
 class ChessPiece
 {
-    private $row;
-    private $col;
-    private $moveRule;
+    private Position $position;
+    private array $moves;
 
-    public function __construct($row, $col, $moveRule)
+    public function __construct(Position $position, array $moves)
     {
-        $this->row = $row;
-        $this->col = $col;            
-        $this->moveRule = $moveRule;
-    }
-    
-    public function move($row, $col)
-    {
-    }
-    
-    public function getRow()
-    {
-        return $this->row;
+        $this->position = $position;
+        $this->moves = $moves;
     }
 
-    public function getCol()
+    public function getPosition()
     {
-        return $this->col;
+        return $this->position;
+    }
+
+    public function setPosition(Position $position)
+    {
+        $this->position = $position;
+    }
+
+    public function getMoves(BoardState $boardState) {
+        $validMoves = array();
+        foreach ($this->moves as $move) {
+            array_push($validMoves, $move->getValidMoves($this->position, $boardState));
+        }
+        return $validMoves;
     }
 }
