@@ -2,6 +2,7 @@
 require("../Position.php");
 require("../BoardState.php");
 require("../MoveRule.php");
+require("../ChessPiece.php");
 
 function compareArrays($a1, $a2)
 {
@@ -17,9 +18,9 @@ $movePath = array(  new Position(1, 1),
                     new Position(5, 1),
                     new Position(6, 1));
 
-$positions = array( new Position(0, 1),
-                    new Position(4, 1),
-                    new Position(2, 0));
+$positions = array( new ChessPiece(new Position(0, 1), array()),
+                    new ChessPiece(new Position(4, 1), array()),
+                    new ChessPiece(new Position(2, 0), array()));
                     
 $boardState = new BoardState($positions);
 

@@ -25,7 +25,7 @@ class ChessPiece
     public function getMoves(BoardState $boardState) {
         $validMoves = array();
         foreach ($this->moves as $move) {
-            array_push($validMoves, $move->getValidMoves($this->position, $boardState));
+            $validMoves = array_merge($validMoves, $move->getValidMoves($this->position, $boardState));
         }
         return $validMoves;
     }
