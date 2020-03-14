@@ -11,6 +11,7 @@ class Position
     public function __construct(int $row, int $col)
     {
         if (!$this->validate($row, $col)) {
+            //TODO should not be unchecked, should just kill the affected game
             throw new RuntimeException('Invalid position. row: ' . $row . ', col: ' . $col);
         }
         $this->row = $row;

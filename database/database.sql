@@ -1,10 +1,11 @@
--- DROP DATABASE cljunggr;
+# DROP DATABASE cljunggr;
 CREATE DATABASE IF NOT EXISTS cljunggr;
 USE cljunggr;
 
 CREATE TABLE color (
     color_id INT PRIMARY KEY AUTO_INCREMENT,
-    type VARCHAR(10) NOT NULL
+    type VARCHAR(10) NOT NULL,
+    CONSTRAINT type_unique UNIQUE (type)
 );
 
 INSERT INTO color (type) VALUES ('White');
@@ -15,6 +16,7 @@ CREATE TABLE piece (
     type VARCHAR(10),
     color_id INT,
     number INT,
+    CONSTRAINT piece_unique UNIQUE (type, color_id, number),
     FOREIGN KEY (color_id) REFERENCES color (color_id)
 );
 
@@ -52,14 +54,56 @@ INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM
 INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 7);
 INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 8);
 
--- CREATE TABLE start_state (
---     piece_id INT,
---     col VARCHAR(1),
---     row VARCHAR(1),
---     FOREIGN KEY (piece_id) REFERENCES piece (piece_id)
--- );
 
--- INSERT INTO start_state (piece_id, col, row) VALUES ((SELECT ));
+CREATE TABLE move (
+    move_id INT PRIMARY KEY AUTO_INCREMENT,
+    piece_type VARCHAR(2),
+    delta_col SMALLINT,
+    delta_row SMALLINT,
+    recursive_rule BOOLEAN,
+    can_capture BOOLEAN,
+    must_capture BOOLEAN,
+    CONSTRAINT move_unique UNIQUE (delta_col, delta_row, recursive_rule, can_capture, must_capture)
+);
+INSERT INTO move (piece_type, delta_col, delta_row, recursive_rule, can_capture, must_capture)
+VALUE ('BP', -1, 1, FALSE, TRUE, TRUE);
+
+
+CREATE TABLE piece_move (
+    piece_move_id INT PRIMARY KEY AUTO_INCREMENT,
+    piece_id INT,
+    move_id INT,
+    FOREIGN KEY (piece_id) REFERENCES piece (piece_id),
+    FOREIGN KEY (move_id) REFERENCES move (move_id)
+);
+
+
+
+CREATE TABLE start_state (
+    piece_id INT PRIMARY KEY,
+    col SMALLINT,
+    row SMALLINT,
+    CONSTRAINT position_unique UNIQUE (col, row),
+    FOREIGN KEY (piece_id) REFERENCES piece (piece_id)
+);
+
+
+INSERT INTO start_state (piece_id, col, row)
+VALUES (
+    (SELECT piece_id FROM piece
+        WHERE type = 'Rook'
+        AND color_id = (SELECT color_id FROM color WHERE type = 'Black')
+        AND number = 1),
+    0, 0);
+
+INSERT INTO start_state (piece_id, col, row)
+VALUES (
+           (SELECT piece_id FROM piece
+            WHERE type = 'Knight'
+              AND color_id = (SELECT color_id FROM color WHERE type = 'Black')
+              AND number = 1),
+           1, 0);
+
 -- start_state:    piece_id(fk), column, row
 -- data:
 -- rook,   white, 1, 1, a
