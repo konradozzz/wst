@@ -3,8 +3,8 @@ require("../Position.php");
 require("../BoardState.php");
 require("../ChessPiece.php");
 
-$piece1 = new ChessPiece(new Position(0, 3), array());
-$piece2 = new ChessPiece(new Position(7, 7), array());
+$piece1 = new ChessPiece(new Position(0, 3), array(), 0);
+$piece2 = new ChessPiece(new Position(7, 7), array(), 0);
 $pieces = array($piece1, $piece2);
 
 $boardState = new BoardState($pieces);

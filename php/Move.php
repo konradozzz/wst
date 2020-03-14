@@ -17,9 +17,9 @@ class Move
         $this->moveRule = $moveRule;
     }
 
-    public function getValidMoves(Position $position, BoardState $boardState) {
+    public function getValidMoves(Position $position, BoardState $boardState, int $color) {
         $moves = $this->movePath->getValidMoves($position);
-        $moves = $this->moveRule->validateMoves($moves, $boardState);
+        $moves = $this->moveRule->validateMoves($moves, $boardState, $color);
         return $moves;
     }
 

@@ -19,12 +19,15 @@ $pieceMove3 = new MovePath(1, 0, true);
 $pieceRule = new MoveRule(true, false);
 $pieceRule2 = new MoveRule(false, false);
 $pieceRule3 = new MoveRule(true, true);
-$piece1 = new ChessPiece(new Position(0, 3), array(new Move($pieceMove, $pieceRule),
-    new Move($pieceMove2, $pieceRule2),
-    new Move($pieceMove3, $pieceRule3)));
-$piece2 = new ChessPiece(new Position(0, 0), array());
-$piece3 = new ChessPiece(new Position(0, 7), array());
-$piece4 = new ChessPiece(new Position(5, 3), array());
+$piece1 = new ChessPiece(
+    new Position(0, 3),
+    array(new Move($pieceMove, $pieceRule),
+        new Move($pieceMove2, $pieceRule2),
+        new Move($pieceMove3, $pieceRule3)),
+    1);
+$piece2 = new ChessPiece(new Position(0, 0), array(), 0);
+$piece3 = new ChessPiece(new Position(0, 7), array(), 0);
+$piece4 = new ChessPiece(new Position(5, 3), array(), 0);
 $pieces = array($piece1, $piece2, $piece3);
 
 $boardState = new BoardState($pieces);
