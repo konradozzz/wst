@@ -1,28 +1,24 @@
 <?php
 require("../Position.php");
 require("../BoardState.php");
-require("../ChessPiece.php");
 
-$piece1 = new ChessPiece(new Position(0, 3), array(), 0);
-$piece2 = new ChessPiece(new Position(7, 7), array(), 0);
-$pieces = array($piece1, $piece2);
+$position1 = new Position(0, 3);
+$position2 = new Position(7, 7);
+$positions = array(1 => $position1, 2 => $position2);
 
-$boardState = new BoardState($pieces);
+
+$boardState = new BoardState($positions);
 assert($boardState->getTile(new Position(0, 3)));
 assert(!$boardState->getTile(new Position(3, 0)));
 
-$boardState->movePiece($piece1, new Position(3, 4));
+$boardState->movePiece(1, new Position(3, 4));
 assert(!$boardState->getTile(new Position(0, 3)));
 assert($boardState->getTile(new Position(3, 4)));
 
-$boardState->movePiece($piece1, new Position(7, 7));
+$boardState->movePiece(1, new Position(7, 7));
 assert(!$boardState->getTile(new Position(3, 4)));
 assert($boardState->getTile(new Position(7, 7)));
-assert($piece1->getPosition()->getCol() == 7);
-assert($piece1->getPosition()->getRow() == 7);
-assert($piece2->getPosition()->getCol() == -1);
-assert($piece2->getPosition()->getRow() == -1);
 
-$boardState->movePiece($piece1, new Position(0, 0));
+$boardState->movePiece(1, new Position(0, 0));
 assert(!$boardState->getTile(new Position(7, 7)));
 assert($boardState->getTile(new Position(0, 0)));

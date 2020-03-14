@@ -38,9 +38,9 @@ class MoveRule
         $validatedMoves = array();
         foreach ($moves as $move) {
             if ($target = $boardState->getTile($move)) {
-                if ($color != $target->getColor()) {
-                    array_push($validatedMoves, $move);
-                }
+//                if ($color != $target->getColor()) {
+                array_push($validatedMoves, $move);
+//                }
                 break;
             }
             array_push($validatedMoves, $move);
@@ -52,9 +52,9 @@ class MoveRule
         $validatedMoves = array();
         foreach ($moves as $move) {
             if ($target = $boardState->getTile($move)) {
-                if ($color != $target->getColor()) {
-                    array_push($validatedMoves, $move);
-                }
+//                if ($color != $target->getColor()) {
+                array_push($validatedMoves, $move);
+//                }
                 break;
             }
         }
