@@ -5,8 +5,8 @@ class Position
 {
     private int $row;
     private int $col;
-    private const MIN_VALUE = 0;
-    private const MAX_VALUE = 7;
+    public const MIN_VALUE = 0;
+    public const MAX_VALUE = 7;
     
     public function __construct(int $row, int $col)
     {
