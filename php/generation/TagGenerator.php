@@ -48,7 +48,7 @@ class TagGenerator
     }
 
     public static function generateHtml(string $head, string $body) : string {
-        $html = "<!DOCTYPE html><html xmlns=\"http://www.w3.org/1999/xhtml\">";
+        $html = "<!DOCTYPE html><html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\">";
         $html = $html . $head;
         $html = $html . $body;
         $html = $html . "</html>";

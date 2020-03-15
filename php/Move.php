@@ -6,11 +6,6 @@ class Move
     private MovePath $movePath;
     private MoveRule $moveRule;
 
-    /**
-     * Move constructor.
-     * @param MovePath $movePath
-     * @param MoveRule $moveRule
-     */
     public function __construct(MovePath $movePath, MoveRule $moveRule)
     {
         $this->movePath = $movePath;

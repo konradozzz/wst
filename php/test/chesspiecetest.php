@@ -20,15 +20,15 @@ $pieceRule = new MoveRule(true, false);
 $pieceRule2 = new MoveRule(false, false);
 $pieceRule3 = new MoveRule(true, true);
 $piece1 = new ChessPiece(
-    1,
+    1, 0,
     array(new Move($pieceMove, $pieceRule),
         new Move($pieceMove2, $pieceRule2),
         new Move($pieceMove3, $pieceRule3)),
-    1);
+    "", "");
 
-$piece2 = new ChessPiece(2, array(), 0);
-$piece3 = new ChessPiece(3, array(), 0);
-$piece4 = new ChessPiece(4, array(), 0);
+$piece2 = new ChessPiece(2, 0, array(), "", "");
+$piece3 = new ChessPiece(3, 0, array(), "", "");
+$piece4 = new ChessPiece(4, 0, array(), "", "");
 $pieces = array($piece1, $piece2, $piece3);
 $positions = array(1 => new Position(0, 3), new Position(0, 0), new Position(0, 7), new Position(5, 3));
 
