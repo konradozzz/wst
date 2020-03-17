@@ -4,12 +4,12 @@
 class ChessPiece
 {
     private int $id;
-    private int $color;
+    private string $color;
     private array $moves;
     private string $image;
     private string $description;
 
-    public function __construct(int $id, int $color, array $moves, string $image, string $description)
+    public function __construct(int $id, string $color, array $moves, string $image, string $description)
     {
         $this->id = $id;
         $this->color = $color;
@@ -27,7 +27,7 @@ class ChessPiece
         return $validMoves;
     }
 
-    public function getColor() : int
+    public function getColor() : string
     {
         return $this->color;
     }

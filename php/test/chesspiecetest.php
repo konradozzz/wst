@@ -26,9 +26,9 @@ $piece1 = new ChessPiece(
         new Move($pieceMove3, $pieceRule3)),
     "", "");
 
-$piece2 = new ChessPiece(2, 0, array(), "", "");
-$piece3 = new ChessPiece(3, 0, array(), "", "");
-$piece4 = new ChessPiece(4, 0, array(), "", "");
+$piece2 = new ChessPiece(2, "White", array(), "", "");
+$piece3 = new ChessPiece(3, "White", array(), "", "");
+$piece4 = new ChessPiece(4, "White", array(), "", "");
 $pieces = array($piece1, $piece2, $piece3);
 $positions = array(1 => new Position(0, 3), new Position(0, 0), new Position(0, 7), new Position(5, 3));
 

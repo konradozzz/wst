@@ -12,52 +12,51 @@ INSERT INTO color (type) VALUES ('White');
 INSERT INTO color (type) VALUES ('Black');
 
 CREATE TABLE piece (
-    piece_id INT PRIMARY KEY AUTO_INCREMENT,
+    piece_id INT PRIMARY KEY,
     type VARCHAR(10),
     color_id INT,
-    number INT,
-    CONSTRAINT piece_unique UNIQUE (type, color_id, number),
+    image VARCHAR(20),
     FOREIGN KEY (color_id) REFERENCES color (color_id)
 );
 
-INSERT INTO piece (type, color_id, number) VALUES ('Rook', (SELECT color_id FROM color WHERE type = 'White'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Rook', (SELECT color_id FROM color WHERE type = 'White'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Knight', (SELECT color_id FROM color WHERE type = 'White'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Knight', (SELECT color_id FROM color WHERE type = 'White'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Bishop', (SELECT color_id FROM color WHERE type = 'White'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Bishop', (SELECT color_id FROM color WHERE type = 'White'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Queen', (SELECT color_id FROM color WHERE type = 'White'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('King', (SELECT color_id FROM color WHERE type = 'White'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 3);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 4);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 5);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 6);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 7);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'White'), 8);
+select p.piece_id, p.type, c.type, p.image from piece p left join color c on p.color_id = c.color_id;
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (1, 'Rook', (SELECT color_id FROM color WHERE type = 'White'), 'white_rook.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (2, 'Rook', (SELECT color_id FROM color WHERE type = 'White'), 'white_rook.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (3, 'Knight', (SELECT color_id FROM color WHERE type = 'White'), 'white_knight.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (4, 'Knight', (SELECT color_id FROM color WHERE type = 'White'), 'white_knight.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (5, 'Bishop', (SELECT color_id FROM color WHERE type = 'White'), 'white_bishop.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (6, 'Bishop', (SELECT color_id FROM color WHERE type = 'White'), 'white_bishop.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (7, 'Queen', (SELECT color_id FROM color WHERE type = 'White'), 'white_queen.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (8, 'King', (SELECT color_id FROM color WHERE type = 'White'), 'white_king.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (9, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (10, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (11, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (12, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (13, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (14, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (15, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (16, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
 
-INSERT INTO piece (type, color_id, number) VALUES ('Rook', (SELECT color_id FROM color WHERE type = 'Black'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Rook', (SELECT color_id FROM color WHERE type = 'Black'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Knight', (SELECT color_id FROM color WHERE type = 'Black'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Knight', (SELECT color_id FROM color WHERE type = 'Black'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Bishop', (SELECT color_id FROM color WHERE type = 'Black'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Bishop', (SELECT color_id FROM color WHERE type = 'Black'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Queen', (SELECT color_id FROM color WHERE type = 'Black'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('King', (SELECT color_id FROM color WHERE type = 'Black'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 1);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 2);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 3);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 4);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 5);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 6);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 7);
-INSERT INTO piece (type, color_id, number) VALUES ('Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 8);
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (17, 'Rook', (SELECT color_id FROM color WHERE type = 'Black'), 'black_rook.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (18, 'Rook', (SELECT color_id FROM color WHERE type = 'Black'), 'black_rook.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (19, 'Knight', (SELECT color_id FROM color WHERE type = 'Black'), 'black_knight.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (20, 'Knight', (SELECT color_id FROM color WHERE type = 'Black'), 'black_knight.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (21, 'Bishop', (SELECT color_id FROM color WHERE type = 'Black'), 'black_bishop.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (22, 'Bishop', (SELECT color_id FROM color WHERE type = 'Black'), 'black_bishop.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (23, 'Queen', (SELECT color_id FROM color WHERE type = 'Black'), 'black_queen.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (24, 'King', (SELECT color_id FROM color WHERE type = 'Black'), 'black_king.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (25, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (26, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (27, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (28, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (29, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (30, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (31, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
+INSERT INTO piece (piece_id, type, color_id, image) VALUES (32, 'Pawn', (SELECT color_id FROM color WHERE type = 'Black'), 'black_pawn.png');
 
 
 CREATE TABLE move (
-    move_id INT PRIMARY KEY AUTO_INCREMENT,
-    piece_type VARCHAR(2),
+    move_id INT PRIMARY KEY,
     delta_col SMALLINT,
     delta_row SMALLINT,
     recursive_rule BOOLEAN,
@@ -65,8 +64,11 @@ CREATE TABLE move (
     must_capture BOOLEAN,
     CONSTRAINT move_unique UNIQUE (delta_col, delta_row, recursive_rule, can_capture, must_capture)
 );
-INSERT INTO move (piece_type, delta_col, delta_row, recursive_rule, can_capture, must_capture)
-VALUE ('BP', -1, 1, FALSE, TRUE, TRUE);
+INSERT INTO move (move_id, delta_col, delta_row, recursive_rule, can_capture, must_capture)
+VALUES (1, -1, 1, FALSE, TRUE, TRUE);
+INSERT INTO move (move_id, delta_col, delta_row, recursive_rule, can_capture, must_capture)
+VALUES (2, 3, 1, FALSE, FALSE, TRUE);
+
 
 
 CREATE TABLE piece_move (
@@ -74,8 +76,16 @@ CREATE TABLE piece_move (
     piece_id INT,
     move_id INT,
     FOREIGN KEY (piece_id) REFERENCES piece (piece_id),
-    FOREIGN KEY (move_id) REFERENCES move (move_id)
+    FOREIGN KEY (move_id) REFERENCES move (move_id),
+    CONSTRAINT piece_move_unique UNIQUE (piece_id, move_id)
 );
+
+INSERT INTO piece_move (piece_id, move_id)
+VALUES (1, 1);
+INSERT INTO piece_move (piece_id, move_id)
+VALUES (2, 1);
+INSERT INTO piece_move (piece_id, move_id)
+VALUES (2, 2);
 
 
 
@@ -89,20 +99,10 @@ CREATE TABLE start_state (
 
 
 INSERT INTO start_state (piece_id, col, row)
-VALUES (
-    (SELECT piece_id FROM piece
-        WHERE type = 'Rook'
-        AND color_id = (SELECT color_id FROM color WHERE type = 'Black')
-        AND number = 1),
-    0, 0);
+VALUES (1, 0, 0);
 
 INSERT INTO start_state (piece_id, col, row)
-VALUES (
-           (SELECT piece_id FROM piece
-            WHERE type = 'Knight'
-              AND color_id = (SELECT color_id FROM color WHERE type = 'Black')
-              AND number = 1),
-           1, 0);
+VALUES (2, 1, 0);
 
 -- start_state:    piece_id(fk), column, row
 -- data:
@@ -199,26 +199,26 @@ values (
     (select color_id from color where type = 'Black'),
     false);
 
-insert into turn (turn_number, game_id, piece_id, to_col, to_row)
-values(
-    1,
-    (select game_id from game where game_id = LAST_INSERT_ID()),
-    -- pawn,   white, 2, 2, b
-    (select piece_id from piece where
-        type = 'Pawn' and
-        color_id = (select color_id from color where type = 'White') and
-        number = 2),
-    'b',
-    '4');
-
-insert into turn (turn_number, game_id, piece_id, to_col, to_row)
-values(
-    2,
-    (select game_id from game where game_id = LAST_INSERT_ID()),
--- pawn,   black, 6, 7, f
-    (select piece_id from piece where
-        type = 'Pawn' and
-        color_id = (select color_id from color where type = 'Black') and
-        number = 6),
-    'f',
-    '6');
+# insert into turn (turn_number, game_id, piece_id, to_col, to_row)
+# values(
+#     1,
+#     (select game_id from game where game_id = LAST_INSERT_ID()),
+#     -- pawn,   white, 2, 2, b
+#     (select piece_id from piece where
+#         type = 'Pawn' and
+#         color_id = (select color_id from color where type = 'White') and
+#         number = 2),
+#     'b',
+#     '4');
+#
+# insert into turn (turn_number, game_id, piece_id, to_col, to_row)
+# values(
+#     2,
+#     (select game_id from game where game_id = LAST_INSERT_ID()),
+# -- pawn,   black, 6, 7, f
+#     (select piece_id from piece where
+#         type = 'Pawn' and
+#         color_id = (select color_id from color where type = 'Black') and
+#         number = 6),
+#     'f',
+#     '6');

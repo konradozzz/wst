@@ -12,7 +12,7 @@ class MoveRule
         $this->mustCapture = $mustCapture;
     }
     
-    public function validateMoves(array $moves, BoardState $boardState, int $color)
+    public function validateMoves(array $moves, BoardState $boardState, string $color)
     {
         if ($this->mustCapture) {
             return $this->mustCapture($moves, $boardState, $color);
@@ -34,7 +34,7 @@ class MoveRule
         return $validatedMoves;
     }
 
-    private function canCapture(array $moves, BoardState $boardState, int $color) {
+    private function canCapture(array $moves, BoardState $boardState, string $color) {
         $validatedMoves = array();
         foreach ($moves as $move) {
             if ($target = $boardState->getTile($move)) {
@@ -48,7 +48,7 @@ class MoveRule
         return $validatedMoves;
     }
 
-    private function mustCapture(array $moves, BoardState $boardState, int $color) {
+    private function mustCapture(array $moves, BoardState $boardState, string $color) {
         $validatedMoves = array();
         foreach ($moves as $move) {
             if ($target = $boardState->getTile($move)) {
