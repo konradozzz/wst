@@ -19,7 +19,6 @@ class ChessPieceDao
     }
 
     public function getPieces() : array {
-        echo self::pieceQuery;
         $results = $this->connection->query(self::pieceQuery);
 
         $pieces = array();

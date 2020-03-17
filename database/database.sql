@@ -2,14 +2,15 @@
 CREATE DATABASE IF NOT EXISTS cljunggr;
 USE cljunggr;
 
+
 CREATE TABLE color (
     color_id INT PRIMARY KEY AUTO_INCREMENT,
     type VARCHAR(10) NOT NULL,
     CONSTRAINT type_unique UNIQUE (type)
 );
-
 INSERT INTO color (type) VALUES ('White');
 INSERT INTO color (type) VALUES ('Black');
+
 
 CREATE TABLE piece (
     piece_id INT PRIMARY KEY,
@@ -18,8 +19,6 @@ CREATE TABLE piece (
     image VARCHAR(20),
     FOREIGN KEY (color_id) REFERENCES color (color_id)
 );
-
-select p.piece_id, p.type, c.type, p.image from piece p left join color c on p.color_id = c.color_id;
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (1, 'Rook', (SELECT color_id FROM color WHERE type = 'White'), 'white_rook.png');
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (2, 'Rook', (SELECT color_id FROM color WHERE type = 'White'), 'white_rook.png');
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (3, 'Knight', (SELECT color_id FROM color WHERE type = 'White'), 'white_knight.png');
@@ -36,7 +35,6 @@ INSERT INTO piece (piece_id, type, color_id, image) VALUES (13, 'Pawn', (SELECT 
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (14, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (15, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (16, 'Pawn', (SELECT color_id FROM color WHERE type = 'White'), 'white_pawn.png');
-
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (17, 'Rook', (SELECT color_id FROM color WHERE type = 'Black'), 'black_rook.png');
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (18, 'Rook', (SELECT color_id FROM color WHERE type = 'Black'), 'black_rook.png');
 INSERT INTO piece (piece_id, type, color_id, image) VALUES (19, 'Knight', (SELECT color_id FROM color WHERE type = 'Black'), 'black_knight.png');
@@ -70,7 +68,6 @@ INSERT INTO move (move_id, delta_col, delta_row, recursive_rule, can_capture, mu
 VALUES (2, 3, 1, FALSE, FALSE, TRUE);
 
 
-
 CREATE TABLE piece_move (
     piece_move_id INT PRIMARY KEY AUTO_INCREMENT,
     piece_id INT,
@@ -79,7 +76,6 @@ CREATE TABLE piece_move (
     FOREIGN KEY (move_id) REFERENCES move (move_id),
     CONSTRAINT piece_move_unique UNIQUE (piece_id, move_id)
 );
-
 INSERT INTO piece_move (piece_id, move_id)
 VALUES (1, 1);
 INSERT INTO piece_move (piece_id, move_id)
@@ -96,49 +92,39 @@ CREATE TABLE start_state (
     CONSTRAINT position_unique UNIQUE (col, row),
     FOREIGN KEY (piece_id) REFERENCES piece (piece_id)
 );
+INSERT INTO start_state (piece_id, col, row) VALUES (1, 0, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (2, 7, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (3, 1, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (4, 6, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (5, 2, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (6, 5, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (7, 3, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (8, 4, 7);
+INSERT INTO start_state (piece_id, col, row) VALUES (9, 0, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (10, 1, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (11, 2, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (12, 3, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (13, 4, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (14, 5, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (15, 6, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (16, 7, 6);
+INSERT INTO start_state (piece_id, col, row) VALUES (17, 0, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (18, 7, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (19, 1, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (20, 6, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (21, 2, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (22, 5, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (23, 3, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (24, 4, 0);
+INSERT INTO start_state (piece_id, col, row) VALUES (25, 0, 1);
+INSERT INTO start_state (piece_id, col, row) VALUES (26, 1, 1);
+INSERT INTO start_state (piece_id, col, row) VALUES (27, 2, 1);
+INSERT INTO start_state (piece_id, col, row) VALUES (28, 3, 1);
+INSERT INTO start_state (piece_id, col, row) VALUES (29, 4, 1);
+INSERT INTO start_state (piece_id, col, row) VALUES (30, 5, 1);
+INSERT INTO start_state (piece_id, col, row) VALUES (31, 6, 1);
+INSERT INTO start_state (piece_id, col, row) VALUES (32, 7, 1);
 
-
-INSERT INTO start_state (piece_id, col, row)
-VALUES (1, 0, 0);
-
-INSERT INTO start_state (piece_id, col, row)
-VALUES (2, 1, 0);
-
--- start_state:    piece_id(fk), column, row
--- data:
--- rook,   white, 1, 1, a
--- rook,   white, 2, 1, h
--- knight, white, 1, 1, b
--- knight, white, 2, 1, g
--- bishop, white, 1, 1, c
--- bishop, white, 2, 1, f
--- queen,  white, 1, 1, d
--- king,   white, 1, 1, e
--- pawn,   white, 1, 2, a
--- pawn,   white, 2, 2, b
--- pawn,   white, 3, 2, c
--- pawn,   white, 4, 2, d
--- pawn,   white, 5, 2, e
--- pawn,   white, 6, 2, f
--- pawn,   white, 7, 2, g
--- pawn,   white, 8, 2, h
--- 
--- rook,   black, 1, 8, a
--- rook,   black, 2, 8, h
--- knight, black, 1, 8, b
--- knight, black, 2, 8, g
--- bishop, black, 1, 8, c
--- bishop, black, 2, 8, f
--- queen,  black, 1, 8, d
--- king,   black, 1, 8, e
--- pawn,   black, 1, 7, a
--- pawn,   black, 2, 7, b
--- pawn,   black, 3, 7, c
--- pawn,   black, 4, 7, d
--- pawn,   black, 5, 7, e
--- pawn,   black, 6, 7, f
--- pawn,   black, 7, 7, g
--- pawn,   black, 8, 7, h
 
 
 CREATE TABLE user (
