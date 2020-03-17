@@ -19,7 +19,7 @@ class TagGenerator
         foreach ($classes as $class) {
             $html = $html . $class . " ";
         }
-        $html = $html . " draggable=\"false\" src=\"";
+        $html = $html . " draggable=\"false\" src=\"images\\";
         $html = $html . $image;
         $html = $html . "\" alt=\"";
         $html = $html . $descriptive;
