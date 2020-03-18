@@ -3,19 +3,14 @@
 
 class DbConnection
 {
-    private const serverName = "localhost";
-    private const username = "cljunggr";
-    private const password = "cljunggr";
-    private const db = "cljunggr";
     private mysqli $connection;
 
-    public function __construct()
+    public function __construct(string $servername, string $database, string $username, string $password, $port)
     {
-        $this->connection = new mysqli(self::serverName, self::username, self::password);
+        $this->connection = new mysqli($servername, $username, $password, $database, $port);
         if ($this->connection->connect_error) {
             throw new RuntimeException($this->connection->connect_error);
         }
-        $this->connection->select_db(self::db);
     }
 
     public function query(string $query) {
