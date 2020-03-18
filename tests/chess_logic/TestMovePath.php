@@ -1,6 +1,6 @@
 <?php
-require("../Position.php");
-require("../MovePath.php");
+require_once(__DIR__ . "/../includes.php");
+echo "===Test MovePath===";
 
 function compareArrays($a1, $a2)
 {

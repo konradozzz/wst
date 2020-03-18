@@ -1,7 +1,6 @@
 <?php
-require("../Position.php");
-require("../BoardState.php");
-require("../MoveRule.php");
+require_once(__DIR__ . "/../includes.php");
+echo "===Test MoveRule===";
 
 function compareArrays($a1, $a2)
 {

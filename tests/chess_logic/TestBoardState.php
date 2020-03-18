@@ -1,10 +1,10 @@
 <?php
-require("../Position.php");
-require("../BoardState.php");
+require_once(__DIR__ . "/../includes.php");
+echo "===Test BoardState===";
 
 $position1 = new Position(0, 3);
-$position2 = new Position(7, 7);
-$positions = array(1 => $position1, 2 => $position2);
+//$position2 = new Position(7, 7);
+$positions = array(1 => $position1);
 
 
 $boardState = new BoardState($positions);

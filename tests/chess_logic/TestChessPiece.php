@@ -1,10 +1,6 @@
 <?php
-require("../ChessPiece.php");
-require("../Position.php");
-require("../BoardState.php");
-require("../Move.php");
-require("../MovePath.php");
-require("../MoveRule.php");
+require_once(__DIR__ . "/../includes.php");
+echo "===Test ChessPiece===";
 
 function compareArrays($a1, $a2)
 {

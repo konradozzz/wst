@@ -13,7 +13,7 @@ class Config
 
     public function __construct(string $config)
     {
-        $this->config = parse_ini_file(__DIR__ . "/../" . $config, true);
+        $this->config = parse_ini_file(__DIR__ . "/../../" . $config, true);
     }
 
     public function getDatabaseAddress() : string {
